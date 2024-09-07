@@ -17,9 +17,9 @@
   "require": {
     "php": "^7.4|^8.1",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^7.9",
+    "guzzlehttp/guzzle": "^7.0",
     "janmuran/object-builder": "^1.0",
-    "doctrine/annotations": "^2.0"
+    "doctrine/annotations": "^1.0|^2.0"
   },
   "require-dev": {
     "mockery/mockery": "^1.4",
