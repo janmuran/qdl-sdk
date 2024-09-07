@@ -27,26 +27,24 @@ class Client
         return $this->sendRequest('GET', $url);
     }
 
+    /**
+     * @param array<mixed> $data
+     */
     public function post(string $url, array $data): ResponseInterface
     {
         return $this->sendRequest('POST', $url, $data);
     }
 
     /**
-     * @param string|array|null $data
+     * @param array<mixed>|null $data
      */
     private function sendRequest(string $method, string $url, $data = null): ResponseInterface
     {
+        $options = [];
         if ($data !== null) {
             $options[RequestOptions::JSON] = $data;
         }
 
-        try {
-            $response = $this->client->request($method, $url, $options);
-        } catch (Throwable $exception) {
-            throw $exception;
-        }
-
-        return $response;
+        return $this->client->request($method, $url, $options);
     }
 }
