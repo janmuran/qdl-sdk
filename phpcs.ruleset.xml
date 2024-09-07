@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="PHPCS rule set">
+    <description>Custom rule set</description>
+    <exclude-pattern>database/migrations</exclude-pattern>
+    <exclude-pattern>tests/Coverage</exclude-pattern>
+    <rule ref="PSR12"/>
+    <rule ref="PSR1">
+        <exclude name="PSR1.Files.SideEffects" />
+    </rule>
+</ruleset>

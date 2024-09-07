@@ -1,10 +1,7 @@
-# qdl-sdk
-Php client for QDL API (Quality Delivery Logistics
+<?php
 
-Example:
-```php
-$login = '';
-$pass = '';
+$login = 'apitest@qdl.sk';
+$pass = 'apitestqdl';
 $sender = 1;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
