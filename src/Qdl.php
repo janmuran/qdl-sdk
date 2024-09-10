@@ -12,7 +12,7 @@ use Janmuran\QdlSdk\Response\ShipmentProtocol;
 use Janmuran\QdlSdk\Response\ShipmentsResponse;
 use RuntimeException;
 
-final class Dql
+final class Qdl
 {
     private const SHIPMENTS_ENDPOINT = '/myq-api/shipment/create-shipment';
     private const LABEL_PRINT_ENDPOINT = '/myq-api/shipment/get-label';

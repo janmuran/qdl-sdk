@@ -10,7 +10,7 @@ $config = new Janmuran\QdlSdk\Config\Config($login, $pass, 'https://qdl.sk');
 $client = new Janmuran\QdlSdk\Client\Client($config);
 $serializer =  JMS\Serializer\SerializerBuilder::create()->build();
 $responseBuilder = new Janmuran\ObjectBuilder\ResponseBuilder($serializer);
-$qdl = new Janmuran\QdlSdk\Dql($client, $responseBuilder);
+$qdl = new Janmuran\QdlSdk\Qdl($client, $responseBuilder);
 
 $shipments = new Janmuran\QdlSdk\Model\Shipments();
 
