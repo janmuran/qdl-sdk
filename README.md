@@ -1,6 +1,37 @@
 # qdl-sdk
 Php client for QDL API (Quality Delivery Logistics
 
+###Laravel setup
+1. Install package
+```bash
+composer require janmuran/qdl-sdk
+```
+2. Add config to config/qdl.php
+```php
+return [
+    'login' => env('QDL_API_LOGIN'),
+    'password' => env('QDL_API_PASSWORD'),
+    'url' => env('QDL_API_URL'),
+];
+```
+3. Add env variables to .env
+```dotenv
+QDL_API_LOGIN=
+QDL_API_PASSWORD=
+QDL_API_URL=https://qdl.sk
+```
+4. Add service provider app/Providers/AppServiceProvider.php
+```php
+$this->app->when(Config::class)
+      ->needs('$login')->give(config('qdl.login'));
+$this->app->when(Config::class)
+       ->needs('$password')->give(config('qdl.password'));
+$this->app->when(Config::class)
+       ->needs('$url')->give(config('qdl.url'));
+```
+
+
+
 Example:
 ```php
 $login = '';
@@ -13,7 +44,7 @@ $config = new Janmuran\QdlSdk\Config\Config($login, $pass, 'https://qdl.sk');
 $client = new Janmuran\QdlSdk\Client\Client($config);
 $serializer =  JMS\Serializer\SerializerBuilder::create()->build();
 $responseBuilder = new Janmuran\ObjectBuilder\ResponseBuilder($serializer);
-$qdl = new Janmuran\QdlSdk\Dql($client, $responseBuilder);
+$qdl = new Janmuran\QdlSdk\Qdl($client, $responseBuilder);
 
 $shipments = new Janmuran\QdlSdk\Model\Shipments();
 
@@ -57,3 +88,4 @@ $shipments->addShipment($shipment);
 $response = $qdl->sendShipments($shipments);
 print_r($response->getShipments());
 print_r($response->getShipmentNumbersByRef());
+```
