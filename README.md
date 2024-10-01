@@ -27,7 +27,7 @@ $this->app->when(Config::class)
 $this->app->when(Config::class)
        ->needs('$password')->give(config('qdl.password'));
 $this->app->when(Config::class)
-       ->needs('$url')->give(config('qdl.url'));
+       ->needs('$baseUri')->give(config('qdl.url'));
 ```
 
 
