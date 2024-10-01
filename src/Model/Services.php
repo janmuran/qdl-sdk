@@ -11,7 +11,7 @@ final class Services
     private bool $sms;
     private bool $call;
     private bool $documentsBack;
-    private string $infoAboutDelivery;
+    private ?string $infoAboutDelivery;
 
     public function __construct(
         bool $g24,
@@ -19,7 +19,7 @@ final class Services
         bool $sms,
         bool $call,
         bool $documentsBack,
-        string $infoAboutDelivery
+        ?string $infoAboutDelivery = null
     ) {
         $this->g24 = $g24;
         $this->t12 = $t12;
@@ -54,7 +54,7 @@ final class Services
         return $this->documentsBack;
     }
 
-    public function getInfoAboutDelivery(): string
+    public function getInfoAboutDelivery(): ?string
     {
         return $this->infoAboutDelivery;
     }
@@ -64,13 +64,18 @@ final class Services
      */
     public function toArray(): array
     {
-        return [
+        $data = [
             'g24' => $this->g24,
             't12' => $this->t12,
             'sms' => $this->sms,
             'call' => $this->call,
             'documentsBack' => $this->documentsBack,
-            'infoAboutDelivery' => $this->infoAboutDelivery,
         ];
+
+        if ($this->infoAboutDelivery !== null) {
+            $data['infoAboutDelivery'] = $this->infoAboutDelivery;
+        }
+
+        return $data;
     }
 }
